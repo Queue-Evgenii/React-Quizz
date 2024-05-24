@@ -1,10 +1,9 @@
 import { QuizTaker } from './pages/QuizTaker';
 import { QuizCreator } from './pages/QuizCreator';
-import { useState } from 'react';
-import { Quiz } from './models/Quiz';
-import { Answer } from './models/Answer';
-import { Question } from './models/Question';
+import { useEffect, useState } from 'react';
+import { Quiz, QuizHelper } from './models/Quiz';
 import { QuizHome } from './pages/QuizHome';
+import defaultQuizes from "./mock/default-quizes.json";
 
 enum Pages {
   Home,
@@ -14,38 +13,29 @@ enum Pages {
 
 function App() {
   const [page, setPage] = useState(Pages.Home);
-  const [currentQuiz] = useState<Quiz>(
-    new Quiz(
-      "Test",
-      [
-        new Question(
-          "Inside which HTML element do we put the JavaScript?",
-          [
-            new Answer("<script>", true),
-            new Answer("<body>", false),
-            new Answer("<js>", false),
-            new Answer("<javascript>", false),
-          ],
-        ),
-        new Question(
-          "2 Inside which HTML element do we put the JavaScript?",
-          [
-            new Answer("<script>", true),
-            new Answer("<body>", false),
-            new Answer("<js>", false),
-            new Answer("<javascript>", false),
-          ],
-        ),
-      ])
-  );
-  const [quizes] = useState<Quiz[]>([currentQuiz, currentQuiz])
+  const [curQuiz, setCurQuiz] = useState<Quiz>({} as Quiz);
+  const [quizes, setQuizes] = useState<Quiz[]>([])
+
+  useEffect(() => {
+    setQuizes(defaultQuizes as Quiz[]);
+  }, []);
 
   const Distributor = () => {
     switch (page) {
       case Pages.Home:
-        return (<QuizHome quizes={ quizes } onSelected={(index: number) => setPage(Pages.QuizTaker) } />);
+        return (
+          <QuizHome
+            quizes={ quizes }
+            onSelected={(index: number) => { setCurQuiz(QuizHelper.copyQuiz(quizes[index])); setPage(Pages.QuizTaker); }}
+          />
+        );
       case Pages.QuizTaker:
-        return (<QuizTaker quiz={currentQuiz} />);
+        return (
+          <QuizTaker
+            quiz={curQuiz}
+            toHome={ () => { setPage(Pages.Home) } }
+          />
+        );
       case Pages.QuizCreator:
         return (<QuizCreator />);
       default:

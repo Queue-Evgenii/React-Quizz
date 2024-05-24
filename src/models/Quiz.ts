@@ -1,3 +1,4 @@
+import { Answer } from "./Answer";
 import { Question } from "./Question";
 
 export class Quiz {
@@ -20,5 +21,32 @@ export class Quiz {
   }
   set questions(value: Question[]) {
     this._questions = value;
+  }
+}
+
+export class QuizHelper {
+  public static caclulateResult(quiz: Quiz): number {
+    let result: number = 0;
+    for (let question of quiz.questions) {
+      for (let answer of question.answers) {
+        if (answer.checked === true && answer.isCorrect === true) {
+          ++result;
+          break;
+        }
+      }
+    }
+    return result;
+  }
+  public static copyQuiz(quiz: Quiz) : Quiz {
+    return new Quiz(
+      quiz.name,
+      quiz.questions
+        .map(qEl => new Question(
+          qEl.name, qEl.answers
+            .map(aEl => new Answer(
+              aEl.name, aEl.isCorrect
+            ))
+        ))
+    )
   }
 }

@@ -6,6 +6,7 @@
   border: 2px solid #bdbdbd;
   transition: 0.2s all linear;
   margin-top: 6px;
+  margin-right: 8px;
 }
 .radio-input:checked {
   border: 6px solid rgb(22 163 74);

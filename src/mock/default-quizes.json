@@ -1,0 +1,156 @@
+[
+  {
+    "name": "JavaScript basics",
+    "questions": [
+      {
+        "name": "Inside which HTML element do we put the JavaScript?",
+        "answers": [
+          {
+            "name": "<code>",
+            "isCorrect": false
+          },
+          {
+            "name": "<script>",
+            "isCorrect": true
+          },
+          {
+            "name": "<body>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "name": "What is the correct JavaScript syntax to change the content of the HTML element below?\n\n<p id=\"demo\">This is a demonstration.</p>",
+        "answers": [
+          {
+            "name": "document.getElement(\"p\").innerHTML = \"Hello World!\";",
+            "isCorrect": false
+          },
+          {
+            "name": "document.getElementById(\"demo\").innerHTML = \"Hello World!\";",
+            "isCorrect": true
+          },
+          {
+            "name": "#demo.innerHTML = \"Hello World!\";",
+            "isCorrect": false
+          },
+          {
+            "name": "document.getElementByName(\"p\").innerHTML = \"Hello World!\";",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "name": "Where is the correct place to insert a JavaScript?",
+        "answers": [
+          {
+            "name": "The <head> section",
+            "isCorrect": false
+          },
+          {
+            "name": "The <body> section",
+            "isCorrect": true
+          },
+          {
+            "name": "Both the <head> section and the <body> section are correct",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "name": "What is the correct syntax for referring to an external script called \"xxx.js\"?",
+        "answers": [
+          {
+            "name": "<script href=\"xxx.js\">",
+            "isCorrect": false
+          },
+          {
+            "name": "<script src=\"xxx.js\">",
+            "isCorrect": true
+          },
+          {
+            "name": "<script name=\"xxx.js\">",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SQL basics",
+    "questions": [
+      {
+        "name": "What does SQL stand for?",
+        "answers": [
+          {
+            "name": "Strong Question Language",
+            "isCorrect": false
+          },
+          {
+            "name": "Structured Query Language",
+            "isCorrect": true
+          },
+          {
+            "name": "Structured Question Language",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "name": "Which SQL statement is used to extract data from a database?",
+        "answers": [
+          {
+            "name": "SELECT",
+            "isCorrect": true
+          },
+          {
+            "name": "GET",
+            "isCorrect": false
+          },
+          {
+            "name": "EXTRACT",
+            "isCorrect": false
+          },
+          {
+            "name": "OPEN",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "name": "Which SQL statement is used to update data in a database?",
+        "answers": [
+          {
+            "name": "SAVE",
+            "isCorrect": false
+          },
+          {
+            "name": "UPDATE",
+            "isCorrect": true
+          },
+          {
+            "name": "CHANGE",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "name": "Which SQL statement is used to delete data from a database?",
+        "answers": [
+          {
+            "name": "DROP",
+            "isCorrect": false
+          },
+          {
+            "name": "DELETE",
+            "isCorrect": true
+          },
+          {
+            "name": "REMOVE",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  }
+]
