@@ -26,18 +26,15 @@ export class Quiz {
 
 export class QuizHelper {
   public static caclulateResult(quiz: Quiz): number {
-    let result: number = 0;
-    for (let question of quiz.questions) {
-      for (let answer of question.answers) {
-        if (answer.checked === true && answer.isCorrect === true) {
-          ++result;
-          break;
-        }
-      }
-    }
-    return result;
+    return quiz.questions.reduce((total, question) => {
+      const correctAnswer = question.answers.find(answer => answer.checked && answer.isCorrect);
+      return correctAnswer ? total + question.points : total;
+    }, 0);
   }
-  public static copyQuiz(quiz: Quiz) : Quiz {
+  public static getMaxPoints(quiz: Quiz): number {
+    return quiz.questions.reduce((total, question) => total += question.points, 0);
+  }
+  public static copyQuiz(quiz: Quiz): Quiz {
     return new Quiz(
       quiz.name,
       quiz.questions
@@ -45,8 +42,31 @@ export class QuizHelper {
           qEl.name, qEl.answers
             .map(aEl => new Answer(
               aEl.name, aEl.isCorrect
-            ))
+            )), qEl.points
         ))
+    )
+  }
+  public static getEmptyAnswer(): Answer {
+    return new Answer(
+      "",
+      false
+    )
+  }
+  public static getEmptyQuestion(): Question {
+    return new Question(
+      "",
+      [
+        this.getEmptyAnswer(),
+        this.getEmptyAnswer()
+      ]
+    );
+  }
+  public static getEmptyQuiz(): Quiz {
+    return new Quiz(
+      "",
+      [
+        this.getEmptyQuestion()
+      ]
     )
   }
 }

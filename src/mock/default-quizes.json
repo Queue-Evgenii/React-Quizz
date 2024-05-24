@@ -17,7 +17,8 @@
             "name": "<body>",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 1
       },
       {
         "name": "What is the correct JavaScript syntax to change the content of the HTML element below?\n\n<p id=\"demo\">This is a demonstration.</p>",
@@ -38,7 +39,8 @@
             "name": "document.getElementByName(\"p\").innerHTML = \"Hello World!\";",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 1
       },
       {
         "name": "Where is the correct place to insert a JavaScript?",
@@ -55,7 +57,8 @@
             "name": "Both the <head> section and the <body> section are correct",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 1
       },
       {
         "name": "What is the correct syntax for referring to an external script called \"xxx.js\"?",
@@ -72,7 +75,8 @@
             "name": "<script name=\"xxx.js\">",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 3
       }
     ]
   },
@@ -94,7 +98,8 @@
             "name": "Structured Question Language",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 1
       },
       {
         "name": "Which SQL statement is used to extract data from a database?",
@@ -115,7 +120,8 @@
             "name": "OPEN",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 1
       },
       {
         "name": "Which SQL statement is used to update data in a database?",
@@ -132,7 +138,8 @@
             "name": "CHANGE",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 1
       },
       {
         "name": "Which SQL statement is used to delete data from a database?",
@@ -149,7 +156,8 @@
             "name": "REMOVE",
             "isCorrect": false
           }
-        ]
+        ],
+        "points": 1
       }
     ]
   }

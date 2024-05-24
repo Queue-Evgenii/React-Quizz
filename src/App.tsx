@@ -17,7 +17,14 @@ function App() {
   const [quizes, setQuizes] = useState<Quiz[]>([])
 
   useEffect(() => {
-    setQuizes(defaultQuizes as Quiz[]);
+    const temp = localStorage.getItem("quizes");
+    if (!temp) {
+      localStorage.setItem("quizes", JSON.stringify(defaultQuizes));
+      setQuizes(defaultQuizes as Quiz[]);
+      return;
+    }
+    
+    setQuizes(JSON.parse(temp) as Quiz[]);
   }, []);
 
   const Distributor = () => {
@@ -27,6 +34,7 @@ function App() {
           <QuizHome
             quizes={ quizes }
             onSelected={(index: number) => { setCurQuiz(QuizHelper.copyQuiz(quizes[index])); setPage(Pages.QuizTaker); }}
+            toCreation={() => { setPage(Pages.QuizCreator)}}
           />
         );
       case Pages.QuizTaker:
@@ -37,9 +45,12 @@ function App() {
           />
         );
       case Pages.QuizCreator:
-        return (<QuizCreator />);
-      default:
-        return (<QuizHome quizes={ quizes } onSelected={(index: number) => setPage(Pages.QuizTaker) } />);
+        return (
+          <QuizCreator
+            onSave={(quiz: Quiz) => {console.log(quiz)}}
+            toHome={ () => { setPage(Pages.Home) } }
+          />
+        );
     }
   }
 

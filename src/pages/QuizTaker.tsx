@@ -6,7 +6,6 @@ import { Button } from "../components/button/Button";
 
 export const QuizTaker = (props: Props) => {
   const [curQuestionNum, setCurQuestionNum] = useState<number>(0);
-  const [result, setResult] = useState<number>(0);
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [answers, setAnswers] = useState<Answer[]>([] as Answer[]);
     
@@ -25,8 +24,6 @@ export const QuizTaker = (props: Props) => {
     setAnswers([...answers]);
   }
   const showResult = () => {
-    console.log(props.quiz);
-    setResult(QuizHelper.caclulateResult(props.quiz));
     setIsFinished(true);
   }
 
@@ -65,11 +62,11 @@ export const QuizTaker = (props: Props) => {
               </p>
               <p>
                 <span className="font-bold">Points: </span>
-                { result } of { props.quiz.questions.length }
+                { QuizHelper.caclulateResult(props.quiz) } of { QuizHelper.getMaxPoints(props.quiz) }
               </p>
               <p>
                 <span className="font-bold">Percentage: </span>
-                { result * 100 / props.quiz.questions.length }%
+                { (QuizHelper.caclulateResult(props.quiz) * 100 / QuizHelper.getMaxPoints(props.quiz)).toFixed(2) }%
               </p>
             </div>
           </>

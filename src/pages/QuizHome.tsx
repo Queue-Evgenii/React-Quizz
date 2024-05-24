@@ -29,7 +29,7 @@ export const QuizHome = (props: Props) => {
           })
         }
       </ul>
-      <Button onClick={ () => {} }>+ Add Quiz</Button>
+      <Button onClick={ props.toCreation }>+ Add Quiz</Button>
     </div>
   )
 }
@@ -37,4 +37,5 @@ export const QuizHome = (props: Props) => {
 type Props = {
   quizes: Quiz[],
   onSelected: (index: number) => void,
+  toCreation: () => void,
 }
