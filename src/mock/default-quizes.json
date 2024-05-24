@@ -160,5 +160,86 @@
         "points": 1
       }
     ]
+  },
+  {
+    "name": "PHP Basics Quiz",
+    "questions": [
+      {
+        "name": "What does PHP stand for?",
+        "answers": [
+          {
+            "name": "PHP: Hypertext Preprocessor",
+            "isCorrect": false
+          },
+          {
+            "name": "Private Home Page",
+            "isCorrect": true
+          },
+          {
+            "name": "Personal Hypertext Processor",
+            "isCorrect": false
+          }
+        ],
+        "points": 1
+      },
+      {
+        "name": "PHP server scripts are surrounded by delimiters, which?",
+        "answers": [
+          {
+            "name": "<script>...</script>",
+            "isCorrect": false
+          },
+          {
+            "name": "<php>...</php>",
+            "isCorrect": false
+          },
+          {
+            "name": "<php>...<?php>",
+            "isCorrect": false
+          },
+          {
+            "name": "<?php...?>",
+            "isCorrect": true
+          }
+        ],
+        "points": 2
+      },
+      {
+        "name": "How do you write \"Hello World\" in PHP?",
+        "answers": [
+          {
+            "name": "Document.Write(\"Hello World\");",
+            "isCorrect": false
+          },
+          {
+            "name": "\"Hello World\";",
+            "isCorrect": false
+          },
+          {
+            "name": "echo \"Hello World\";",
+            "isCorrect": true
+          }
+        ],
+        "points": 1
+      },
+      {
+        "name": "All variables in PHP start with which symbol?",
+        "answers": [
+          {
+            "name": "$",
+            "isCorrect": true
+          },
+          {
+            "name": "&",
+            "isCorrect": false
+          },
+          {
+            "name": "!",
+            "isCorrect": false
+          }
+        ],
+        "points": 2
+      }
+    ]
   }
 ]

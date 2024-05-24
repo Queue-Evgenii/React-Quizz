@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Quiz, QuizHelper } from './models/Quiz';
 import { QuizHome } from './pages/QuizHome';
 import defaultQuizes from "./mock/default-quizes.json";
+import { selectQuizes, updateQuizes } from './api/quizes';
 
 enum Pages {
   Home,
@@ -16,15 +17,18 @@ function App() {
   const [curQuiz, setCurQuiz] = useState<Quiz>({} as Quiz);
   const [quizes, setQuizes] = useState<Quiz[]>([])
 
+  const resDelegate = (res: Quiz[]) => {
+    setQuizes(res);
+  }
+
   useEffect(() => {
-    const temp = localStorage.getItem("quizes");
-    if (!temp) {
-      localStorage.setItem("quizes", JSON.stringify(defaultQuizes));
-      setQuizes(defaultQuizes as Quiz[]);
-      return;
-    }
-    
-    setQuizes(JSON.parse(temp) as Quiz[]);
+    selectQuizes()
+      .then(resDelegate)
+      .catch((err: Error) => {
+        console.error(err);
+        updateQuizes(defaultQuizes as Quiz[])
+          .then(resDelegate);
+      })
   }, []);
 
   const Distributor = () => {
@@ -47,7 +51,11 @@ function App() {
       case Pages.QuizCreator:
         return (
           <QuizCreator
-            onSave={(quiz: Quiz) => {console.log(quiz)}}
+            onSave={(quiz: Quiz) => {
+              updateQuizes([...quizes, QuizHelper.getJsonFormat(quiz) as Quiz])
+                .then(resDelegate)
+                .finally(() => setPage(Pages.Home));
+            }}
             toHome={ () => { setPage(Pages.Home) } }
           />
         );

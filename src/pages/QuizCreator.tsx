@@ -6,6 +6,7 @@ import { Quiz, QuizHelper } from "../models/Quiz"
 
 export const QuizCreator = (props: Props) => {
   const [quiz, setQuiz] = useState<Quiz>(QuizHelper.getEmptyQuiz());
+  const [isError, setIsError] = useState<boolean>(false);
 
   return (
     <div>
@@ -68,7 +69,7 @@ export const QuizCreator = (props: Props) => {
           ))
         }
       </ol>
-      <div className="my-4 flex gap-x-4">
+      <div className="my-4 flex flex-wrap gap-y-2 gap-x-4">
         <Button
           onClick={() => {
             quiz.questions.push(QuizHelper.getEmptyQuestion());
@@ -79,11 +80,19 @@ export const QuizCreator = (props: Props) => {
           Add question
         </Button>
         <Button
-          onClick={() => props.onSave(quiz)}
+          onClick={() => {
+            setIsError(false);
+            if (!QuizHelper.isValid(quiz)) {
+              setIsError(true);
+              return;
+            }
+            props.onSave(quiz);
+          }}
           width={ 164 }
         >
           Save quiz
         </Button>
+        { isError ? (<span className="text-xl text-red-800">Some fields are empty or invalid! Please fix and try again!</span>) : (<></>) }
       </div>
       <Button onClick={ props.toHome } width={ 92 } isActive={ false }>Home</Button>
     </div>
@@ -92,5 +101,5 @@ export const QuizCreator = (props: Props) => {
 
 type Props = {
   onSave: (quiz: Quiz) => void,
-  toHome: () => void,
+  toHome: () => void
 }

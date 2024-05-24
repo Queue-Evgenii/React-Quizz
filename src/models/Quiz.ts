@@ -69,4 +69,40 @@ export class QuizHelper {
       ]
     )
   }
+  public static getJsonFormat(quiz: Quiz) {
+    return {
+      name: quiz.name,
+      questions: quiz.questions.map((qEl: Question) => {
+        return {
+          name: qEl.name,
+          points: qEl.points,
+          answers: qEl.answers.map(aEl => {
+            return {
+              name: aEl.name,
+              isCorrect: aEl.isCorrect,
+              checked: aEl.checked
+            }
+          })
+        }
+      }),
+    }
+  }
+  public static isValid(quiz: Quiz): boolean {
+    if (quiz.name.length === 0 || quiz.questions.length === 0) return false;
+
+    for (let qEl of quiz.questions) {
+      if (qEl.name.length === 0 || qEl.points <= 0 || qEl.answers.length < 2) return false
+      for (let aEl of qEl.answers) {
+        if (aEl.name.length === 0) return false;
+      }
+
+      let checkedCount = 0, correctCount = 0;
+      for (let aEl of qEl.answers) {
+        if (aEl.checked) checkedCount++;
+        if (aEl.isCorrect) correctCount++;
+      }
+      if (checkedCount > 1 || correctCount !== 1) return false;
+    }
+    return true;
+  }
 }
