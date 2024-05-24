@@ -1,10 +1,11 @@
 import { QuizTaker } from './pages/QuizTaker';
 import { QuizCreator } from './pages/QuizCreator';
 import { useEffect, useState } from 'react';
-import { Quiz, QuizHelper } from './models/Quiz';
+import { Quiz } from './models/Quiz';
 import { QuizHome } from './pages/QuizHome';
 import defaultQuizes from "./mock/default-quizes.json";
 import { selectQuizes, updateQuizes } from './api/quizes';
+import { QuizHelper } from './helpers/QuizHelper';
 
 enum Pages {
   Home,

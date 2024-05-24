@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { Quiz, QuizHelper } from "../models/Quiz";
+import { Quiz } from "../models/Quiz";
 import { Answer } from "../models/Answer";
 import { RadioInput } from "../components/radio-input/RadioInput";
 import { Button } from "../components/button/Button";
+import { QuizHelper } from "../helpers/QuizHelper";
 
 export const QuizTaker = (props: Props) => {
   const [curQuestionNum, setCurQuestionNum] = useState<number>(0);

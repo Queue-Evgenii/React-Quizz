@@ -2,7 +2,8 @@ import { useState } from "react"
 import { Button } from "../components/button/Button"
 import { RadioInput } from "../components/radio-input/RadioInput"
 import { NumberInput, TextareaInput, TextInput } from "../components/text-input/TextInput"
-import { Quiz, QuizHelper } from "../models/Quiz"
+import { Quiz } from "../models/Quiz"
+import { QuizHelper } from "../helpers/QuizHelper"
 
 export const QuizCreator = (props: Props) => {
   const [quiz, setQuiz] = useState<Quiz>(QuizHelper.getEmptyQuiz());
