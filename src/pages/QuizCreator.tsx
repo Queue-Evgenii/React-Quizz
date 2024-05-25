@@ -12,7 +12,7 @@ export const QuizCreator = (props: Props) => {
   return (
     <div>
       <h2 className="text-3xl font-semibold my-3">Quiz creator:</h2>
-      <div className="w-96">
+      <div className="max-w-96">
       <TextInput
         name="Quiz name:"
         placeholder="Your quiz name"

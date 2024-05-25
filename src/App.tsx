@@ -64,7 +64,7 @@ function App() {
   }
 
   return (
-    <div className="px-16 py-8">
+    <div className="px-4 md:px-16 py-8">
       <h1 className="text-5xl font-bold">React Quiz</h1>
       <Distributor />
     </div>

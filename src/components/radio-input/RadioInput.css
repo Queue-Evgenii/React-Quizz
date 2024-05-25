@@ -2,6 +2,7 @@
   appearance: none;
   border-radius: 50%;
   width: 16px;
+  flex: 0 0 16px;
   height: 16px;
   border: 2px solid #bdbdbd;
   transition: 0.2s all linear;
@@ -10,4 +11,12 @@
 }
 .radio-input:checked {
   border: 6px solid rgb(22 163 74);
+}
+.radio-label {
+  font-size: 1.25rem;
+}
+@media(max-width: 768px) {
+  .radio-label {
+    font-size: 1rem;
+  }
 }

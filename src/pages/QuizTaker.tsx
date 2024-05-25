@@ -30,7 +30,7 @@ export const QuizTaker = (props: Props) => {
 
   const List = () => {
     return (
-      <ul className="my-4 pl-4">
+      <ul className="my-4 min-[500px]:pl-4">
         { 
           answers.map((el: Answer, index: number) => {
             return (
@@ -74,8 +74,9 @@ export const QuizTaker = (props: Props) => {
         ) : (
           <>
             <h3 className="text-2xl font-semibold my-4">Question { curQuestionNum + 1 } of { props.quiz.questions.length }:</h3>
-            <div className="pl-4">
-              <pre className="text-2xl my-4">{ props.quiz.questions[curQuestionNum].name }</pre>
+            <div className="min-[500px]:pl-4">
+              <pre className="text-2xl my-2 text-wrap">{ props.quiz.questions[curQuestionNum].name }</pre>
+              <span className="text-lg font-semibold">{ props.quiz.questions[curQuestionNum].points } points *</span>
               <List />
             </div>
           </>
